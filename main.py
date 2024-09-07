@@ -86,4 +86,5 @@ while True:
     SCREEN.fill(BLACK)
     all_sprites_group.draw(SCREEN)
     pygame.display.update()
+    print("hello")
     clock.tick(FPS)
