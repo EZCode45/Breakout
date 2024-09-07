@@ -55,9 +55,11 @@ class Paddle(pygame.sprite.Sprite):
 
 class Ball(pygame.sprite.Sprite):
   def __init__(self, color, width, height):
-    self.image = pygame.Surface([width, height])
     super().__init__()
+    self.image = pygame.Surface([width, height])
     pygame.draw.rect(self.image, color, [0, 0, width, height])
+    self.rect = self.image.get_rect()
+    self.velocity = [velocity, velocity]
 wall_width = 16  
 while True:
   for event in pygame.event.get():
