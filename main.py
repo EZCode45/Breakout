@@ -49,9 +49,9 @@ class Paddle(pygame.sprite.Sprite):
     if self.rect.x > WIDTH - wall_width - paddle_width:
       self.rect.x = WIDTH - wall_width - paddle_width
   def move_right(self, pixels):
-    self.rect.x += pixels
-    if self.rect.x > WIDTH - wall_width - paddle_width:
-      self.rect.x = WIDTH - wall_width - paddle_width
+    self.rect.x -= pixels
+    if self.rect.x < wall_width:
+      self.rect.x = wall_width
 
 wall_width = 16  
 while True:
