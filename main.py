@@ -61,8 +61,8 @@ class Ball(pygame.sprite.Sprite):
     self.rect = self.image.get_rect()
     self.velocity = [velocity, velocity]
   def update(self, *args, **kwargs):
-    self.rect.x +=velocity[0]
-    self.rect.y +=velocity[1]
+    self.rect.x += velocity[0]
+    self.rect.y += velocity[1]
   def bounce(self):
     self.velocity[0] = self.velocity[0]
     self.velocity[1] = -self.velocity[1]
