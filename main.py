@@ -53,6 +53,11 @@ class Paddle(pygame.sprite.Sprite):
     if self.rect.x < wall_width:
       self.rect.x = wall_width
 
+class Ball(pygame.sprite.Sprite):
+  def __init__(self, color, width, height):
+    self.image = pygame.Surface([width, height])
+    super().__init__()
+    pygame.draw.rect(self.image, color, [0, 0, width, height])
 wall_width = 16  
 while True:
   for event in pygame.event.get():
