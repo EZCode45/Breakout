@@ -66,6 +66,13 @@ class Ball(pygame.sprite.Sprite):
   def bounce(self):
     self.velocity[0] = self.velocity[0]
     self.velocity[1] = -self.velocity[1]
+
+paddle = Paddle(BLUE,paddle_width, paddle_height)
+paddle.rect.x = WIDTH//2 - paddle_width//2
+padddle.rect.y = HEIGHT - 65
+
+ball = Ball(WHITE, 10, 10)
+ball.rect.x = WIDTH
 wall_width = 16  
 while True:
   for event in pygame.event.get():
