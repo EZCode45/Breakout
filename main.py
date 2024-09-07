@@ -2,7 +2,7 @@ import sys
 
 import pygame
 from pygame.locals import QUIT
-from pygame.sprite import _Group
+from pygame.sprite import Group
 
 pygame.init()
 #-------------------------
