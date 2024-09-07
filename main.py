@@ -69,7 +69,7 @@ class Ball(pygame.sprite.Sprite):
 
 paddle = Paddle(BLUE,paddle_width, paddle_height)
 paddle.rect.x = WIDTH//2 - paddle_width//2
-padddle.rect.y = HEIGHT - 65
+paddle.rect.y = HEIGHT - 65
 
 ball = Ball(WHITE, 10, 10)
 ball.rect.x = WIDTH
