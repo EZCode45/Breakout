@@ -82,7 +82,8 @@ while True:
     if event.type == QUIT:
       pygame.quit()
       sys.exit()
-    all_sprites_group.draw(SCREEN)
+    all_sprites_group.update()  
     SCREEN.fill(BLACK)
+    all_sprites_group.draw(SCREEN)
     pygame.display.update()
     clock.tick(FPS)
