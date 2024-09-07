@@ -27,7 +27,7 @@ YELLOW = ('#fffb00')
 
 score = 0
 balls = 1
-velocity = 0
+velocity = 1
 paddle_width = 54
 paddle_height = 20
 all_sprites_group= pygame.sprite.Group()
