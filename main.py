@@ -60,6 +60,10 @@ class Ball(pygame.sprite.Sprite):
     pygame.draw.rect(self.image, color, [0, 0, width, height])
     self.rect = self.image.get_rect()
     self.velocity = [velocity, velocity]
+  def update(self):
+    self.rect.x +=velocity[0]
+    self.rect.y +=velocity[1]
+  def bounce
 wall_width = 16  
 while True:
   for event in pygame.event.get():
