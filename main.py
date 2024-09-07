@@ -2,6 +2,7 @@ import sys
 
 import pygame
 from pygame.locals import QUIT
+from pygame.sprite import _Group
 
 pygame.init()
 #-------------------------
@@ -32,7 +33,19 @@ paddle_height = 20
 all_sprites_group= pygame.sprite.Group()
 
 class Brick(pygame.sprite.Sprite):
-
+  def __init__(self, color, width, height):
+    self.image = pygame.Surface([width, height])
+    super().__init__()
+    pygame.draw.rect(self.image, color, [0, 0, width, height])
+    self.rect = self.image.get_rect()
+    
+class Paddle(pygame.sprite.Sprite):
+  def __init__(self,color, width, height):
+    self.image = pygame.Surface([width, height])
+    pygame.draw.rect(self.image, color, [0, 0, width, height])
+    self.rect = self.image.get_rect()
+  
+  
 while True:
   for event in pygame.event.get():
     if event.type == QUIT:
