@@ -27,11 +27,10 @@ YELLOW = ('#fffb00')
 
 score = 0
 balls = 1
-velocity = 4
+velocity = 0
 paddle_width = 54
 paddle_height = 20
 all_sprites_group= pygame.sprite.Group()
-
 class Brick(pygame.sprite.Sprite):
   def __init__(self, color, width, height):
     self.image = pygame.Surface([width, height])
@@ -72,7 +71,8 @@ paddle.rect.x = WIDTH//2 - paddle_width//2
 paddle.rect.y = HEIGHT - 65
 
 ball = Ball(WHITE, 10, 10)
-ball.rect.x = WIDTH
+ball.rect.x = WIDTH//2 - 5
+ball.rect.y = HEIGHT// 2 - 5
 wall_width = 16  
 while True:
   for event in pygame.event.get():
