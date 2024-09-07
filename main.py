@@ -24,6 +24,10 @@ GREEN = ('#00ba09')
 YELLOW = ('#fffb00')
 #-------------------------
 
+score = 0
+balls = 1
+velocity = 4
+
 while True:
   for event in pygame.event.get():
     if event.type == QUIT:
