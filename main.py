@@ -73,11 +73,14 @@ paddle.rect.y = HEIGHT - 65
 ball = Ball(WHITE, 10, 10)
 ball.rect.x = WIDTH//2 - 5
 ball.rect.y = HEIGHT// 2 - 5
+all_sprites_group.add(ball)
+all_sprites_group.add(paddle)
 wall_width = 16  
 while True:
   for event in pygame.event.get():
     if event.type == QUIT:
       pygame.quit()
       sys.exit()
+    all_sprites_group.draw(SCREEN)
     pygame.display.update()
     clock.tick(FPS)
