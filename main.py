@@ -44,8 +44,16 @@ class Paddle(pygame.sprite.Sprite):
     self.image = pygame.Surface([width, height])
     pygame.draw.rect(self.image, color, [0, 0, width, height])
     self.rect = self.image.get_rect()
-  
-  
+  def move_right(self, pixels):
+    self.rect.x += pixels
+    if self.rect.x > WIDTH - wall_width - paddle_width:
+      self.rect.x = WIDTH - wall_width - paddle_width
+  def move_right(self, pixels):
+    self.rect.x += pixels
+    if self.rect.x > WIDTH - wall_width - paddle_width:
+      self.rect.x = WIDTH - wall_width - paddle_width
+
+wall_width = 16  
 while True:
   for event in pygame.event.get():
     if event.type == QUIT:
