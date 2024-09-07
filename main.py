@@ -82,5 +82,6 @@ while True:
       pygame.quit()
       sys.exit()
     all_sprites_group.draw(SCREEN)
+    SCREEN.fill(BLACK)
     pygame.display.update()
     clock.tick(FPS)
