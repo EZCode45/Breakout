@@ -12,7 +12,7 @@ screen_size = (WIDTH, HEIGHT)
 SCREEN = pygame.display.set_mode(screen_size)
 pygame.display.set_caption('breakout')
 clock = pygame.time.Clock()
-FPS = 60
+FPS = 30
 #-------------------------
 #color constants
 WHITE = ('#ffffff')
@@ -30,7 +30,8 @@ balls = 1
 velocity = 1
 paddle_width = 54
 paddle_height = 20
-all_sprites_group= pygame.sprite.Group()
+all_sprites_group = pygame.sprite.Group()
+all_bricks_group = pygame.sprite.Group()
 class Brick(pygame.sprite.Sprite):
   def __init__(self, color, width, height):
     self.image = pygame.Surface([width, height])
@@ -76,7 +77,28 @@ ball.rect.x = WIDTH//2 - 5
 ball.rect.y = HEIGHT// 2 - 5
 all_sprites_group.add(ball)
 all_sprites_group.add(paddle)
-wall_width = 16  
+
+brick_width = 55
+brick_height = 16
+x_gap = 7
+y_gap = 5
+wall_width = 16
+
+def spawn_bricks():
+  for i in range(8):
+    for j in range(14):
+      if i < 2:
+        brick = Brick(RED, brick_width, brick_height)
+      if 1 < i < 4:
+        brick = Brick(ORANGE, brick_width, brick_height)
+      if 3 < 1 < 6:
+        brick = Brick(GREEN, brick_width, brick_height)
+      if 5 < i < 8:
+        brick = Brick(YELLOW, brick_width, brick_height)
+      if j == 0:
+        brick.rect.x = wall_width
+      else:
+        brick.rect.x = wall_width + brick_width + x_gap + (j - 1) * (brick_width + x_gap)
 while True:
   for event in pygame.event.get():
     if event.type == QUIT:
