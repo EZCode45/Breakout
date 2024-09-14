@@ -86,4 +86,6 @@ while True:
     SCREEN.fill(BLACK)
     all_sprites_group.draw(SCREEN)
     pygame.display.update()
+    paddle.move_right(500)
+    paddle.move_left(500)
     clock.tick(FPS)
