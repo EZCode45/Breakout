@@ -12,7 +12,7 @@ screen_size = (WIDTH, HEIGHT)
 SCREEN = pygame.display.set_mode(screen_size)
 pygame.display.set_caption('breakout')
 clock = pygame.time.Clock()
-FPS = 120
+FPS = 60
 #-------------------------
 #color constants
 WHITE = ('#ffffff')
@@ -86,6 +86,4 @@ while True:
     SCREEN.fill(BLACK)
     all_sprites_group.draw(SCREEN)
     pygame.display.update()
-    paddle.move_right(500)
-    paddle.move_left(500)
     clock.tick(FPS)
