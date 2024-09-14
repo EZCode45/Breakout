@@ -44,7 +44,7 @@ class Paddle(pygame.sprite.Sprite):
     self.image = pygame.Surface([width, height])
     pygame.draw.rect(self.image, color, [0, 0, width, height])
     self.rect = self.image.get_rect()
-  def move_right(self, pixels):
+  def move_left(self, pixels):
     self.rect.x += pixels
     if self.rect.x > WIDTH - wall_width - paddle_width:
       self.rect.x = WIDTH - wall_width - paddle_width
@@ -61,8 +61,8 @@ class Ball(pygame.sprite.Sprite):
     self.rect = self.image.get_rect()
     self.velocity = [velocity, velocity]
   def update(self, *args, **kwargs):
-    self.rect.x += velocity[0]
-    self.rect.y += velocity[1]
+    self.rect.x += self.velocity[0]
+    self.rect.y += self.velocity[1]
   def bounce(self):
     self.velocity[0] = self.velocity[0]
     self.velocity[1] = -self.velocity[1]
