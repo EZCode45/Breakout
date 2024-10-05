@@ -89,17 +89,37 @@ def spawn_bricks():
     for j in range(14):
       if i < 2:
         brick = Brick(RED, brick_width, brick_height)
+        if j == 0:
+          brick.rect.x = wall_width
+        else:
+          brick.rect.x = wall_width + brick_width + x_gap + (j - 1) * (brick_width + x_gap)
       if 1 < i < 4:
         brick = Brick(ORANGE, brick_width, brick_height)
+        if j == 0:
+          brick.rect.x = wall_width
+        else:
+          brick.rect.x = wall_width + brick_width + x_gap + (j - 1) * (brick_width + x_gap)
       if 3 < 1 < 6:
         brick = Brick(GREEN, brick_width, brick_height)
+        if j == 0:
+          brick.rect.x = wall_width
+        else:
+          brick.rect.x = wall_width + brick_width + x_gap + (j - 1) * (brick_width + x_gap)
+        if j == 0:
+          brick.rect.x = wall_width
+        else:
+          brick.rect.x = wall_width + brick_width + x_gap + (j - 1) * (brick_width + x_gap)
       if 5 < i < 8:
         brick = Brick(YELLOW, brick_width, brick_height)
-      if j == 0:
-        brick.rect.x = wall_width # type: ignore
-      else:
-        brick.rect.x = wall_width + brick_width + x_gap + (j - 1) * (brick_width + x_gap) # type: ignore
-while True:
+        if j == 0:
+          brick.rect.x = wall_width
+        else:
+          brick.rect.x = wall_width + brick_width + x_gap + (j - 1) * (brick_width + x_gap)
+        
+spawn_bricks()
+step = 0
+run = True
+while run:
   for event in pygame.event.get():
     if event.type == QUIT:
       pygame.quit()
