@@ -96,9 +96,9 @@ def spawn_bricks():
       if 5 < i < 8:
         brick = Brick(YELLOW, brick_width, brick_height)
       if j == 0:
-        brick.rect.x = wall_width
+        brick.rect.x = wall_width # type: ignore
       else:
-        brick.rect.x = wall_width + brick_width + x_gap + (j - 1) * (brick_width + x_gap)
+        brick.rect.x = wall_width + brick_width + x_gap + (j - 1) * (brick_width + x_gap) # type: ignore
 while True:
   for event in pygame.event.get():
     if event.type == QUIT:
