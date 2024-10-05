@@ -12,7 +12,7 @@ screen_size = (WIDTH, HEIGHT)
 SCREEN = pygame.display.set_mode(screen_size)
 pygame.display.set_caption('breakout')
 clock = pygame.time.Clock()
-FPS = 30
+FPS = 60
 #-------------------------
 #color constants
 WHITE = ('#ffffff')
@@ -26,7 +26,7 @@ YELLOW = ('#fffb00')
 #-------------------------
 
 score = 0
-balls = 1
+lives = 2
 velocity = 1
 paddle_width = 54
 paddle_height = 20
@@ -45,11 +45,11 @@ class Paddle(pygame.sprite.Sprite):
     self.image = pygame.Surface([width, height])
     pygame.draw.rect(self.image, color, [0, 0, width, height])
     self.rect = self.image.get_rect()
-  def move_left(self, pixels):
+  def move_right(self, pixels):
     self.rect.x += pixels
     if self.rect.x > WIDTH - wall_width - paddle_width:
       self.rect.x = WIDTH - wall_width - paddle_width
-  def move_right(self, pixels):
+  def move_left(self, pixels):
     self.rect.x -= pixels
     if self.rect.x < wall_width:
       self.rect.x = wall_width
@@ -60,7 +60,7 @@ class Ball(pygame.sprite.Sprite):
     self.image = pygame.Surface([width, height])
     pygame.draw.rect(self.image, color, [0, 0, width, height])
     self.rect = self.image.get_rect()
-    self.velocity = [velocity, velocity]
+    self.velocity = [velocity, 0]
   def update(self, *args, **kwargs):
     self.rect.x += self.velocity[0]
     self.rect.y += self.velocity[1]
@@ -124,7 +124,34 @@ while run:
     if event.type == QUIT:
       pygame.quit()
       sys.exit()
+      
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+      paddle.move_left(10)
+    if keys[pygame.K_RIGHT]:
+      paddle.move_right(10)
+      
+    
     all_sprites_group.update()  
+    #top edge
+    if ball.rect.y < 40:
+      ball.velocity[0] *= -1
+    #bottom edge
+    if ball.rect.y > HEIGHT:
+      ball.velocity[0] *= 1
+      ball.rect.x = WIDTH //2
+      ball.rect.y = HEIGHT //2
+      lives -= 1
+    #right wall
+    if ball.rect.x > (WIDTH - 40):
+      ball.velocity[1] *= 1
+      #left wall
+    if ball.rect.x < 40:
+      ball.velocity[1] *= -1
+    if lives == 0:
+      font = pygame.font.Font('meiryomeiryomeiryouimeiryouiitalic', 70)
+      text = font.render("Game Over",True,WHITE )
+      run = False
     SCREEN.fill(BLACK)
     all_sprites_group.draw(SCREEN)
     pygame.display.update()
